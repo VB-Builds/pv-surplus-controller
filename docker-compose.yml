@@ -1,0 +1,23 @@
+# One virtual day over real protocols: OCPP 1.6J (charge point -> central system) and Modbus TCP (controller -> inverter/meter).
+# docker compose up --build   (about 60 s of wall time; results are written to ./results)
+services:
+  inverter:
+    build: .
+    command: ["inverter", "--port", "5020", "--tick", "0.2", "--start-delay", "10"]
+    volumes:
+      - ./results:/app/results
+    ports:
+      - "5020:5020"
+  controller:
+    build: .
+    command: ["controller", "--ocpp-port", "9000", "--modbus", "inverter:5020"]
+    depends_on:
+      - inverter
+    ports:
+      - "9000:9000"
+  charger:
+    build: .
+    command: ["charger", "--ocpp", "ws://controller:9000", "--modbus", "inverter:5020"]
+    depends_on:
+      - controller
+      - inverter

@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pv-surplus-controller"
+version = "0.1.0"
+description = "Open-source home energy manager: routes rooftop-PV surplus into an EV charger (OCPP 1.6J), heat pump (SG-Ready style), boiler and battery under a grid-connection limit."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = [
+  "ocpp>=2.0",
+  "pymodbus~=3.16",
+  "websockets>=13",
+  "pandas>=2.1",
+  "numpy>=1.26",
+  "scipy>=1.11",
+  "matplotlib>=3.8",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.5"]
+
+[project.scripts]
+pvsc = "pvsc.cli:main"
+
+[tool.setuptools]
+packages = ["pvsc"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-p no:asyncio"
+
+[tool.ruff]
+line-length = 135
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]

@@ -1,0 +1,32 @@
+{
+  "claim": "Open-source energy manager: sends rooftop-PV surplus to the EV, boiler and heat pump.",
+  "data_label": "open data: Open-Meteo irradiance, Zurich 2024 | simulated house and devices",
+  "stats": [
+    [
+      "75 %",
+      "PV self-consumption (dumb: 60 %)",
+      "green"
+    ],
+    [
+      "CHF 214",
+      "saved per year vs dumb charging",
+      "accent"
+    ],
+    [
+      "0",
+      "steps above 25 A (dumb: 40)",
+      "amber"
+    ]
+  ],
+  "limit": "Simulated house, EV and devices; feed-in price assumed; no real hardware tested yet.",
+  "alt": "Dark chart. Top: a summer evening and the next day. Solar production is an amber curve; EV charging power is a red spike at plug-in for dumb charging and a green block around midday for the controller. Bottom: monthly PV self-consumption bars, higher with the controller in every month.",
+  "hashtags": [
+    "#IoT",
+    "#Photovoltaik",
+    "#Eigenverbrauch",
+    "#EVCharging",
+    "#OCPP",
+    "#Energiemanagement"
+  ],
+  "post": "Rooftop solar often goes to the grid at a low price while the EV charges from the grid at night.\n\nI built an open-source home energy manager that routes PV surplus into an EV charger (OCPP 1.6J smart charging), a boiler and a heat pump (SG-Ready style signal), with a 25 A per phase house connection limit. It reads a simulated inverter and meter over Modbus TCP and sets charging limits through real OCPP messages to a simulated charge point.\n\nSimulated over one year (Zurich 2024 irradiance from Open-Meteo, 8 kWp, 10 kWh battery, a household with an EV and a heat pump): PV self-consumption 60 % with dumb charging, 75 % with the controller. Cost saved against dumb charging: CHF 214 per year at the ElCom 2024 Zurich tariff and an assumed 8 Rp feed-in. The dumb baseline crossed 25 A on 40 five-minute steps, the controller on 0. Every EV session still reached its target by departure (100 %).\n\nNot verified: no real hardware, a simulated house and driving pattern, an assumed feed-in price, and the limit holds only if the loop reacts faster than the load steps.\n\nWhat would you check first before trusting a controller like this on a real house?\n\nCode: https://github.com/Usernamepersonperson/pv-surplus-controller"
+}
