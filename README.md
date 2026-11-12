@@ -107,4 +107,4 @@ flowchart LR
 
 ## Licence
 
-MIT, Copyright (c) 2026 Victor Bonilla. Dependencies: ocpp (MIT), pymodbus (BSD-3-Clause), websockets, scipy, numpy, pandas (BSD), matplotlib. Weather data CC BY 4.0 (Open-Meteo).
+MIT, Copyright (c) 2026 VB-Builds. Dependencies: ocpp (MIT), pymodbus (BSD-3-Clause), websockets, scipy, numpy, pandas (BSD), matplotlib. Weather data CC BY 4.0 (Open-Meteo).
