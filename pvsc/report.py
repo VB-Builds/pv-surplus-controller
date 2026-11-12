@@ -188,7 +188,7 @@ def linkedin(all_m: dict, live: dict | None) -> dict:
         "Not verified: no real hardware, a simulated house and driving pattern, an assumed feed-in price, and the "
         "limit holds only if the loop reacts faster than the load steps.\n\n"
         "What would you check first before trusting a controller like this on a real house?\n\n"
-        "Code: https://github.com/Usernamepersonperson/pv-surplus-controller"
+        "Code: https://github.com/VB-Builds/pv-surplus-controller"
     )
     return {
         "claim": "Open-source energy manager: sends rooftop-PV surplus to the EV, boiler and heat pump.",
